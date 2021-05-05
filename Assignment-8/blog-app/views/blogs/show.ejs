@@ -1,0 +1,74 @@
+<%- include('../partials/header') %> 
+<%- include('../partials/navbar') %> 
+    
+
+    <div class="container" style="margin: 5px auto;">
+
+        <h1>Blogs</h1>
+        <%- include('../partials/flash')  %> 
+        <div >
+            <div class="card shadow p-3 mb-5 bg-body rounded">
+                <div class="card-body">
+                  <h3 class="card-title"><strong><%= blog.title %> </strong></h3>
+                  <div>
+                    <h5 class="card-subtitle mb-2 text-muted"><strong><%= blog.author %> </strong></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><%= blog.createdAt %> </h6>
+                  </div>
+                  <img src="<%= blog.img %> " alt="image" class="card-img-top" style="height: 50%; ">
+                  <br>
+                  <br>
+                  <p class="card-text"><%= blog.content %> </p>
+                  <a href="/blogs/<%= blog._id %>/edit " class="btn btn-warning">Edit</a>
+                  <form action="/blogs/<%= blog._id %>?_method=DELETE " method="POST">
+                    <br>
+                    <button class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+        <br>
+        <br>
+
+        <div>
+          <h3>There are <%= blog.comments.length %> comments</h3>
+          <h4>Add Comment</h4>
+          <form class="validated-form" action="/blogs/<%=blog._id%>/comment" method="POST" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="" min="0" max="5" name="username" id="username">
+            </div>
+        
+            <div class="mb-3">
+                <label for="content" class="form-label">Comment</label>
+                <textarea class="form-control" id="content" cols="35" rows="3" name="content" required></textarea>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+           
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+
+          <div class="mb-3 mt-3">
+            <%for(let comment of blog.comments){%>
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                      <h5 class="card-title">username: <%= comment.username %></h5>
+                    </div>
+                    <div class="card-body">
+                      
+                      <p class="card-text"><%=comment.content%></p>
+                    </div>
+                  </div>
+
+            <%}%>
+        </div>
+
+        </div>
+
+    </div>
+
+
+
+<%- include('../partials/footer') %> 
