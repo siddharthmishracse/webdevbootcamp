@@ -1,4 +1,7 @@
-.container{
-    height: 100% auto;
-    width: 100% auto;
-}
+body{ 
+    background:url(https://previews.123rf.com/images/enterline/enterline1610/enterline161001178/64649786-the-word-football-concept-and-theme-painted-in-watercolor-ink-on-a-white-paper-.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
